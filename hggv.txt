@@ -1,0 +1,31 @@
+npm i -g vercel
+
+vercel login
+
+cd ramxpedition-site
+vercel --prod
+
+# Registro A para domínio principal
+Type: A
+Name: @
+Value: 76.76.21.21
+TTL: 3600
+
+# Registro CNAME para www
+Type: CNAME
+Name: www
+Value: cname.vercel-dns.com
+TTL: 3600
+
+Headers de SegurançaO arquivo vercel.json já inclui headers de segurança:•X-Content-Type-Options•X-Frame-Options•X-XSS-Protection•Referrer-Policy
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+
+
