@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ramxpedition.com.br/sitemap.xml
+
+# Disallow sensitive areas
+Disallow: /contracts/
+Disallow: /docs/
+Disallow: /*.json$
+
+# Allow important pages
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /videos/
+

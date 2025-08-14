@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RAM Expeditions Sanctum - Jornada oficial para COP30 2025. Stellantis ESG, sustentabilidade e preservação da Amazônia.">
+    <meta name="keywords" content="RAM, Stellantis, COP30, ESG, Amazônia, sustentabilidade, AIONDJ">
+    <meta name="author" content="AIONDJ - Daniel Domingos">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ramxpedition.com.br/">
+    <meta property="og:title" content="RAM Expeditions Sanctum | COP30 2025">
+    <meta property="og:description" content="Regeneração através da aventura - Jornada oficial para COP30">
+    <meta property="og:image" content="https://ramxpedition.com.br/img/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ramxpedition.com.br/">
+    <meta property="twitter:title" content="RAM Expeditions Sanctum | COP30 2025">
+    <meta property="twitter:description" content="Regeneração através da aventura - Jornada oficial para COP30">
+    <meta property="twitter:image" content="https://ramxpedition.com.br/img/og-image.jpg">
+
+    <title>RAM Expeditions Sanctum | COP30 2025 | Stellantis ESG</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Web3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <img src="img/ram-logo.png" alt="RAM" class="loading-logo">
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p>Carregando experiência...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="brand-bar">
+            <img src="img/ram-logo.png" alt="RAM" class="logo" loading="lazy">
+            <img src="img/stellantis-logo.png" alt="Stellantis" class="logo" loading="lazy">
+            <img src="img/aiondj-signature.png" alt="AIONDJ" class="logo" loading="lazy">
+        </div>
+        <nav class="main-nav">
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#manifesto" class="nav-link">Manifesto ESG</a></li>
+                <li><a href="#cop30" class="nav-link">Road to COP30</a></li>
+                <li><a href="#nfts" class="nav-link">NFT Collection</a></li>
+                <li><a href="#esg-dashboard" class="nav-link">Impacto Real</a></li>
+                <li><a href="#contato" class="nav-link">Junte-se</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="video-bg">
+            <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
+                <source src="videos/manifesto-esg.mp4" type="video/mp4">
+                <source src="videos/manifesto-esg.webm" type="video/webm">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">REGENERAÇÃO</span>
+                <span class="title-line">ATRAVÉS DA</span>
+                <span class="title-line highlight">AVENTURA</span>
+            </h1>
+            <p class="hero-subtitle">RAM | Stellantis | AIONDJ | COP30</p>
+            
+            <!-- Countdown -->
+            <div class="countdown-container">
+                <h3>Contagem regressiva para COP30</h3>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">000</span>
+                        <span class="countdown-label">Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partners-logos">
+                <img src="img/tomorrowland-logo.png" alt="Tomorrowland" loading="lazy">
+                <img src="img/amazon-fund.png" alt="Fundo Amazônia" loading="lazy">
+                <img src="img/un-climate.png" alt="UN Climate" loading="lazy">
+            </div>
+            
+            <div class="hero-cta">
+                <button class="cta-primary" onclick="scrollToSection('contato')">
+                    Participar da Expedição
+                </button>
+                <button class="cta-secondary" onclick="scrollToSection('manifesto')">
+                    Conhecer o Manifesto
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Manifesto ESG Section -->
+    <section id="manifesto" class="manifesto-section">
+        <div class="container">
+            <h2 class="section-title">Manifesto ESG</h2>
+            <div class="manifesto-content">
+                <div class="manifesto-text">
+                    <h3>Uma Nova Era de Responsabilidade</h3>
+                    <p>A RAM Expeditions Sanctum representa mais que uma jornada - é um compromisso com o futuro do nosso planeta. Através da parceria estratégica entre RAM, Stellantis e AIONDJ, criamos uma ponte entre aventura e responsabilidade ambiental.</p>
+                    <p>Nossa missão é demonstrar que a sustentabilidade e a performance podem coexistir, criando um impacto positivo mensurável nas comunidades amazônicas e no meio ambiente global.</p>
+                </div>
+                <div class="manifesto-video">
+                    <video controls poster="img/manifesto-poster.jpg">
+                        <source src="videos/manifesto-esg.mp4" type="video/mp4">
+                        <source src="videos/manifesto-esg.webm" type="video/webm">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Road to COP30 Section -->
+    <section id="cop30" class="cop30-section">
+        <div class="container">
+            <h2 class="section-title">Road to COP30</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>Preparação e Parcerias</h4>
+                        <p>Estabelecimento das parcerias estratégicas e desenvolvimento da plataforma blockchain.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q1 2025</div>
+                    <div class="timeline-content">
+                        <h4>Lançamento NFT Collection</h4>
+                        <p>Primeira coleção de NFTs para conservação da Amazônia.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Q3 2025</div>
+                    <div class="timeline-content">
+                        <h4>Expedições Preparatórias</h4>
+                        <p>Série de expedições para mapear e documentar áreas de conservação.</p>
+                    </div>
+                </div>
+                <div class="timeline-item active">
+                    <div class="timeline-date">Nov 2025</div>
+                    <div class="timeline-content">
+                        <h4>COP30 - Belém</h4>
+                        <p>Apresentação oficial dos resultados e impacto gerado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NFT Collection Section -->
+    <section id="nfts" class="nfts-section">
+        <div class="container">
+            <h2 class="section-title">NFT Collection</h2>
+            <div class="nft-grid">
+                <div class="nft-card">
+                    <div class="nft-image">
+                        <img src="img/nft-1.jpg" alt="NFT Amazônia #1" loading="lazy">
+                    </div>
+                    <div class="nft-info">
+                        <h4>Amazônia Preservada #001</h4>
+                        <p>100m² de área preservada</p>
+                        <div class="nft-price">0.1 ETH</div>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <div class="nft-image">
+                        <img src="img/nft-2.jpg" alt="NFT Amazônia #2" loading="lazy">
+                    </div>
+                    <div class="nft-info">
+                        <h4>Amazônia Preservada #002</h4>
+                        <p>100m² de área preservada</p>
+                        <div class="nft-price">0.1 ETH</div>
+                    </div>
+                </div>
+                <div class="nft-card">
+                    <div class="nft-image">
+                        <img src="img/nft-3.jpg" alt="NFT Amazônia #3" loading="lazy">
+                    </div>
+                    <div class="nft-info">
+                        <h4>Amazônia Preservada #003</h4>
+                        <p>100m² de área preservada</p>
+                        <div class="nft-price">0.1 ETH</div>
+                    </div>
+                </div>
+            </div>
+            <div class="nft-cta">
+                <button class="cta-primary" id="connect-wallet">Conectar Carteira</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESG Dashboard Section -->
+    <section id="esg-dashboard" class="esg-dashboard">
+        <div class="container">
+            <h2 class="section-title">Impacto ESG em Tempo Real</h2>
+            <div class="esg-metrics">
+                <div class="metric">
+                    <div class="gauge" id="carbon-gauge">
+                        <div class="gauge-inner">
+                            <span class="gauge-value" id="carbon-value">0</span>
+                            <span class="gauge-unit">kg CO₂</span>
+                        </div>
+                    </div>
+                    <h3>Carbono Compensado</h3>
+                    <p id="carbon-live">Carregando...</p>
+                </div>
+                <div class="metric">
+                    <div class="gauge" id="community-gauge">
+                        <div class="gauge-inner">
+                            <span class="gauge-value" id="community-value">0</span>
+                            <span class="gauge-unit">famílias</span>
+                        </div>
+                    </div>
+                    <h3>Comunidades Impactadas</h3>
+                    <p id="community-live">Carregando...</p>
+                </div>
+                <div class="metric">
+                    <div class="gauge" id="area-gauge">
+                        <div class="gauge-inner">
+                            <span class="gauge-value" id="area-value">0</span>
+                            <span class="gauge-unit">m²</span>
+                        </div>
+                    </div>
+                    <h3>Área Preservada</h3>
+                    <p id="area-live">Carregando...</p>
+                </div>
+            </div>
+            
+            <div class="blockchain-verify">
+                <button id="verify-chain" class="cta-secondary">
+                    Verificar na Blockchain
+                </button>
+                <p class="transaction-info">
+                    Última transação: <span id="last-transaction">Carregando...</span>
+                </p>
+                <button id="refresh-impact" class="cta-primary">
+                    Atualizar Dados
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Junte-se à Expedição</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Seja Parte da Mudança</h3>
+                    <p>Cadastre-se para receber atualizações exclusivas sobre a jornada para COP30 e oportunidades de participação.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Email:</strong> contato@ramxpedition.com.br
+                        </div>
+                        <div class="contact-item">
+                            <strong>Embaixador:</strong> Daniel Domingos (AIONDJ)
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Seu telefone">
+                    </div>
+                    <div class="form-group">
+                        <select name="interest" required>
+                            <option value="">Área de interesse</option>
+                            <option value="nft">Coleção NFT</option>
+                            <option value="expedition">Expedições</option>
+                            <option value="partnership">Parcerias</option>
+                            <option value="investment">Investimento</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Sua mensagem" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="cta-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Parcerias Oficiais</h4>
+                    <div class="corporate-links">
+                        <a href="https://www.stellantis.com/esg" target="_blank" rel="noopener">
+                            <img src="img/stellantis-esg-badge.png" alt="Stellantis ESG" loading="lazy">
+                        </a>
+                        <a href="https://www.ram.com.br/sustentabilidade" target="_blank" rel="noopener">
+                            RAM Sustentabilidade
+                        </a>
+                        <a href="https://cop30.pa.gov.br" target="_blank" rel="noopener">
+                            COP30 Official
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ramxpeditionsanctum" target="_blank" rel="noopener">Instagram</a>
+                        <a href="https://twitter.com/ram_sanctum" target="_blank" rel="noopener">Twitter</a>
+                        <a href="https://linkedin.com/company/ramxpedition" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <div class="aiondj-signature">
+                        <p>Embaixador Oficial: <strong>Daniel Domingos (AIONDJ)</strong></p>
+                        <img src="img/aiondj-signature.png" alt="Assinatura AIONDJ" loading="lazy">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 RAM Expeditions Sanctum. Todos os direitos reservados.</p>
+                <div class="footer-links">
+                    <a href="/privacy">Política de Privacidade</a>
+                    <a href="/terms">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
+
