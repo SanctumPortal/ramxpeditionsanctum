@@ -61,8 +61,6 @@ php -S localhost:8000
 
 3. Acesse `http://localhost:8000` no navegador
 
-## 🌐 Deploy no Vercel
-
 ### Método 1: Deploy Automático via Git
 
 1. Faça fork deste repositório
@@ -160,7 +158,7 @@ Para funcionalidade completa da blockchain:
 - Headers de segurança configurados
 - Proteção XSS
 - Content Security Policy
-- HTTPS obrigatório
+- HTTPS/SSL obrigatório
 
 ## 🤝 Contribuição
 
