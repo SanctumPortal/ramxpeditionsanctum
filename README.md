@@ -1,150 +1,108 @@
-# RAM Expeditions Sanctum
+# RAM Expedition Sanctum
 
-Site oficial da jornada RAM Expeditions Sanctum para COP30 2025.
+Official website for the RAM Expedition Sanctum journey to COP30 2025.
 
-## 🌿 Sobre o Projeto
+## 🌿 About the Project
 
-A RAM Expeditions Sanctum representa uma parceria estratégica entre RAM, Stellantis e AIONDJ para demonstrar que sustentabilidade e performance podem coexistir, criando impacto positivo mensurável nas comunidades amazônicas e no meio ambiente global.
+RAM Expedition Sanctum represents a strategic partnership between RAM, Stellantis, and AIONDJ to demonstrate that sustainability and performance can coexist, creating a measurable positive impact on Amazon communities and the global environment.
 
-## 🚀 Tecnologias
+## 🚀 Technologies
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Blockchain**: Web3.js, Polygon Network
-- **Deploy**: Vercel
+- **Blockchain**: Web3.js, Ethers.js, Polygon Network
+- **Deployment**: Vercel
 - **Design**: Responsive, Mobile-first
 - **Performance**: Lazy loading, Image optimization
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
-ramxpedition-site/
-├── index.html              # Página principal
+ramxpedition/
+├── index.html              # Main page
+├── admin.html              # Admin dashboard
 ├── css/
-│   └── style.css           # Estilos principais
+│   └── style.css           # Main styles
 ├── js/
-│   └── app.js              # JavaScript principal
-├── img/                    # Imagens e assets
-├── videos/                 # Vídeos do projeto
-├── contracts/              # ABIs dos contratos blockchain
-├── docs/                   # Documentação adicional
-├── vercel.json             # Configuração Vercel
-├── package.json            # Configuração do projeto
-└── README.md               # Este arquivo
+│   ├── app.js              # Main JavaScript
+│   └── admin.js            # Admin panel logic
+├── img/                    # Images and assets
+├── videos/                 # Project videos
+├── contracts/              # ABIs of blockchain contracts
+├── lang/                   # Language files (i18n)
+├── docs/                   # Additional documentation
+├── package.json            # Project configuration
+└── README.md               # This file
 ```
 
-## 🛠️ Instalação e Desenvolvimento
+## 🛠️ Installation and Development
 
-### Pré-requisitos
-- Node.js (opcional, para ferramentas de desenvolvimento)
+### Prerequisites
+- Node.js (optional, for development tools)
 - Git
-- Navegador moderno com suporte a ES6+
+- A modern browser with ES6+ support
 
-### Desenvolvimento Local
+### Local Development
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
 git clone https://github.com/ramxpedition/sanctum-site.git
 cd sanctum-site
 ```
 
-2. Inicie um servidor local:
+2. Start a local server:
 ```bash
-# Usando Python (recomendado)
+# Using Python
 python3 -m http.server 8000
-
-# Ou usando Node.js
-npx serve .
-
-# Ou usando PHP
-php -S localhost:8000
 ```
 
-3. Acesse `http://localhost:8000` no navegador
+3. Access `http://localhost:8000` in your browser.
 
-### Método 1: Deploy Automático via Git
+For detailed deployment instructions, see [DEPLOY_INSTRUCTIONS.md](DEPLOY_INSTRUCTIONS.md).
 
-1. Faça fork deste repositório
-2. Conecte sua conta Vercel ao GitHub
-3. Importe o projeto no Vercel
-4. Configure o domínio personalizado `ramxpedition.com.br`
+## 🔗 Blockchain Integration
 
-### Método 2: Deploy Manual
+The site integrates with smart contracts on the Polygon network to display real-time ESG metrics:
 
-1. Instale a CLI do Vercel:
-```bash
-npm i -g vercel
-```
+- **Stellantis ESG Contract**: `0x742d35Cc6634C0532925a3b844Bc454e4438f44e` (Testnet)
+- **RAM NFT Contract**: `0xdA10bEa1100A109dD0A04A25a3B844Bc454e4438` (Testnet)
 
-2. Faça login:
-```bash
-vercel login
-```
+### Web3 Configuration
 
-3. Deploy:
-```bash
-vercel --prod
-```
+For full blockchain functionality:
 
-### Configuração do Domínio
+1. Install MetaMask or another Web3 provider.
+2. Connect to the Polygon network.
+3. ESG data will be loaded automatically.
 
-1. No painel do Vercel, vá em **Settings > Domains**
-2. Adicione `ramxpedition.com.br`
-3. Configure os DNS no seu provedor:
+## 📱 Features
 
-```
-Type: A
-Name: @
-Value: 76.76.21.21
+### ✅ Implemented
+- [x] Responsive and mobile-first design
+- [x] Web3 integration with MetaMask
+- [x] Real-time ESG metrics
+- [x] Countdown to COP30
+- [x] NFT Gallery
+- [x] Contact form
+- [x] Performance optimization
+- [x] SEO optimized
+- [x] Admin dashboard
+- [x] Multilingual support (EN/ES/PT)
 
-Type: CNAME
-Name: www
-Value: cname.vercel-dns.com
-```
-
-## 🔗 Integração Blockchain
-
-O site integra com contratos inteligentes na rede Polygon para exibir métricas ESG em tempo real:
-
-- **Stellantis ESG Contract**: `0x742d35Cc6634C0532925a3b844Bc454e4438f44e`
-- **RAM NFT Contract**: `0xdA10bEa1100A109dD0A04A25a3B844Bc454e4438`
-
-### Configuração Web3
-
-Para funcionalidade completa da blockchain:
-
-1. Instale MetaMask ou outro provedor Web3
-2. Conecte à rede Polygon
-3. Os dados ESG serão carregados automaticamente
-
-## 📱 Recursos
-
-### ✅ Implementado
-- [x] Design responsivo e mobile-first
-- [x] Integração Web3 com MetaMask
-- [x] Métricas ESG em tempo real
-- [x] Countdown para COP30
-- [x] Galeria NFT
-- [x] Formulário de contato
-- [x] Otimização de performance
-- [x] SEO otimizado
-
-### 🔄 Em Desenvolvimento
-- [ ] Integração com contratos reais
-- [ ] Sistema de notificações
-- [ ] Dashboard administrativo
-- [ ] Multilíngue (EN/ES)
+### 🔄 In Development
+- [ ] Integration with real contracts
+- [ ] Notification system
 
 ## 🎨 Design System
 
-### Cores Oficiais
+### Official Colors
 - **RAM Orange**: `#FF6B00`
 - **Stellantis Blue**: `#0033A0`
 - **ESG Green**: `#00A859`
 - **Amazon Green**: `#2E8B57`
 
-### Tipografia
-- **Fonte Principal**: Montserrat
-- **Pesos**: 300, 400, 600, 700, 900
+### Typography
+- **Main Font**: Montserrat
+- **Weights**: 300, 400, 600, 700, 900
 
 ## 📊 Performance
 
@@ -153,33 +111,29 @@ Para funcionalidade completa da blockchain:
 - **Largest Contentful Paint**: < 2.5s
 - **Cumulative Layout Shift**: < 0.1
 
-## 🔒 Segurança
+## 🔒 Security
 
-- Headers de segurança configurados
-- Proteção XSS
+- Security headers configured
+- XSS protection
 - Content Security Policy
-- HTTPS/SSL obrigatório
+- HTTPS/SSL required
 
-## 🤝 Contribuição
+## 🤝 Contribution
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project.
+2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
 
-## 📄 Licença
+## 👥 Team
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+- **Official Ambassador**: Daniel Domingos (AIONDJ)
+- **Strategic Partner**: RAM Trucks Brasil
+- **Corporate Partner**: Stellantis
+- **Target Event**: COP30 Belém 2025
 
-## 👥 Equipe
-
-- **Embaixador Oficial**: Daniel Domingos (AIONDJ)
-- **Parceiro Estratégico**: RAM Trucks Brasil
-- **Parceiro Corporativo**: Stellantis
-- **Evento Alvo**: COP30 Belém 2025
-
-## 📞 Contato
+## 📞 Contact
 
 - **Email**: contato@ramxpedition.com.br
 - **Instagram**: [@ramxpeditionsanctum](https://instagram.com/ramxpeditionsanctum)
@@ -188,5 +142,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para de
 
 ---
 
-**RAM Expeditions Sanctum** - Regeneração através da aventura 🌿🚗
+**RAM Expedition Sanctum** - Regeneration through adventure 🌿🚗
 
