@@ -63,13 +63,20 @@
                 <span></span>
                 <span></span>
             </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#manifesto" class="nav-link">Manifesto ESG</a></li>
-                <li><a href="#cop30" class="nav-link">Road to COP30</a></li>
-                <li><a href="#nfts" class="nav-link">NFT Collection</a></li>
-                <li><a href="#esg-dashboard" class="nav-link">Impacto Real</a></li>
-                <li><a href="#contato" class="nav-link">Junte-se</a></li>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="#manifesto" class="nav-link" data-i18n="manifesto_title">Manifesto</a></li>
+                <li><a href="#cop30" class="nav-link" data-i18n="cop30_title">Jornada para COP30</a></li>
+                <li><a href="#nfts" class="nav-link" data-i18n="nfts_title">Galeria de NFTs</a></li>
+                <li><a href="#esg" class="nav-link" data-i18n="esg_title">Dashboard ESG</a></li>
+                <li><a href="#contact" class_="nav-link" data-i18n="contact_title">Contato</a></li>
             </ul>
+            <div class="language-switcher">
+                <select id="language-select">
+                    <option value="pt">PT</option>
+                    <option value="en">EN</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
         </nav>
     </header>
 
@@ -84,11 +91,10 @@
         </div>
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="title-line">REGENERAÇÃO</span>
-                <span class="title-line">ATRAVÉS DA</span>
-                <span class="title-line highlight">AVENTURA</span>
-            </h1>
-            <p class="hero-subtitle">RAM | Stellantis | AIONDJ | COP30</p>
+                    <span class="title-line" data-i18n="hero_title">RAM Expeditions</span>
+                    <span class="title-line highlight">Sanctum</span>
+                </h1>
+                <h2 class="hero-subtitle" data-i18n="hero_subtitle">Site oficial da jornada RAM Expeditions Sanctum para COP30 2025.</h2>
             
             <!-- Countdown -->
             <div class="countdown-container">
@@ -133,7 +139,7 @@
     <!-- Manifesto ESG Section -->
     <section id="manifesto" class="manifesto-section">
         <div class="container">
-            <h2 class="section-title">Manifesto ESG</h2>
+            <h2 class="section-title" data-i18n="manifesto_title">Manifesto</h2>
             <div class="manifesto-content">
                 <div class="manifesto-text">
                     <h3>Uma Nova Era de Responsabilidade</h3>
@@ -283,7 +289,7 @@
     <!-- Contact Section -->
     <section id="contato" class="contact-section">
         <div class="container">
-            <h2 class="section-title">Junte-se à Expedição</h2>
+            <h2 class="section-title" data-i18n="contact_title">Junte-se à Expedição</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Seja Parte da Mudança</h3>
@@ -364,8 +370,9 @@
             <div class="footer-bottom">
                 <p>&copy; 2024 RAM Expeditions Sanctum. Todos os direitos reservados.</p>
                 <div class="footer-links">
-                    <a href="/privacy">Política de Privacidade</a>
-                    <a href="/terms">Termos de Uso</a>
+                    <a href="/admin.html">Admin</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
                 </div>
             </div>
         </div>

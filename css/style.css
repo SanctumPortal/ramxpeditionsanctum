@@ -180,6 +180,28 @@ body {
     transform: translateY(-2px);
 }
 
+/* Language Switcher */
+.language-switcher {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.language-switcher select {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    border: 1px solid var(--white);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.language-switcher select option {
+    background: var(--gray-dark);
+    color: var(--white);
+}
+
 /* Mobile Navigation */
 .nav-toggle {
     display: none;
@@ -988,6 +1010,69 @@ body::after {
     .contact-form {
         padding: 20px;
     }
+}
+
+/* Notification System */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+    color: var(--white);
+    transform: translateX(120%);
+    transition: transform var(--transition-medium);
+    max-width: 350px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.notification-content p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.notification .close-btn {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0 5px;
+}
+
+.notification-info {
+    background: var(--stellantis-blue);
+}
+
+.notification-success {
+    background: var(--esg-green);
+}
+
+.notification-warning {
+    background: var(--ram-orange);
+}
+
+.notification-error {
+    background: #d32f2f;
 }
 
 /* Print Styles */

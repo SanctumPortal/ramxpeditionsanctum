@@ -146,6 +146,7 @@ const NavigationManager = {
         this.setupMobileMenu();
         this.setupScrollEffects();
         this.setupSmoothScrolling();
+        this.setupLanguageSwitcher();
     },
 
     setupMobileMenu() {
@@ -195,6 +196,15 @@ const NavigationManager = {
                 link.classList.add('active');
             });
         });
+    },
+
+    setupLanguageSwitcher() {
+        const languageSelect = document.getElementById('language-select');
+        if (languageSelect) {
+            languageSelect.addEventListener('change', (e) => {
+                LanguageManager.switchLanguage(e.target.value);
+            });
+        }
     }
 };
 
@@ -433,12 +443,12 @@ const Web3Manager = {
 
     showWeb3Warning() {
         const message = 'Para ver dados em tempo real da blockchain, instale o MetaMask ou outro provedor Web3.';
-        this.showNotification(message, 'warning');
+        NotificationManager.show(message, 'warning');
     },
 
     showWeb3Error() {
         const message = 'Erro ao conectar com a blockchain. Alguns recursos podem não funcionar.';
-        this.showNotification(message, 'error');
+        NotificationManager.show(message, 'error');
     },
 
     showNotification(message, type = 'info') {
@@ -464,6 +474,124 @@ const Web3Manager = {
         setTimeout(() => {
             notification.remove();
         }, 5000);
+    }
+};
+
+// Gerenciamento de Idioma
+const LanguageManager = {
+    currentLanguage: 'pt',
+    translations: {},
+
+    async init() {
+        await this.loadLanguage(this.getInitialLanguage());
+        this.translatePage();
+    },
+
+    async loadLanguage(lang) {
+        try {
+            const response = await fetch(`lang/${lang}.json`);
+            if (!response.ok) {
+                throw new Error(`Failed to load language file: ${lang}.json`);
+            }
+            this.translations = await response.json();
+            this.currentLanguage = lang;
+            document.documentElement.lang = lang;
+        } catch (error) {
+            console.error(error);
+            // Fallback to default language (Portuguese)
+            if (lang !== 'pt') {
+                await this.loadLanguage('pt');
+            }
+        }
+    },
+
+    translatePage() {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (this.translations[key]) {
+                element.textContent = this.translations[key];
+            }
+        });
+    },
+
+    async switchLanguage(lang) {
+        await this.loadLanguage(lang);
+        this.translatePage();
+    },
+
+    getInitialLanguage() {
+        const browserLang = navigator.language.split('-')[0];
+        if (['en', 'es', 'pt'].includes(browserLang)) {
+            return browserLang;
+        }
+        return 'pt'; // Default language
+    }
+};
+
+// Gerenciamento de Notificações
+const NotificationManager = {
+    init() {
+        const notificationContainer = document.createElement('div');
+        notificationContainer.id = 'notification-container';
+        document.body.appendChild(notificationContainer);
+    },
+
+    show(message, type = 'info', duration = 5000) {
+        const container = document.getElementById('notification-container');
+        if (!container) return;
+
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        
+        const icon = this.getIcon(type);
+        const closeButton = '<button class="close-btn">&times;</button>';
+
+        notification.innerHTML = `
+            <div class="notification-icon">${icon}</div>
+            <div class="notification-content">
+                <p>${message}</p>
+            </div>
+            ${closeButton}
+        `;
+
+        container.appendChild(notification);
+
+        // Animação de entrada
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 100);
+
+        // Fechar ao clicar no botão
+        notification.querySelector('.close-btn').addEventListener('click', () => {
+            this.hide(notification);
+        });
+
+        // Fechar após a duração
+        if (duration) {
+            setTimeout(() => {
+                this.hide(notification);
+            }, duration);
+        }
+    },
+
+    hide(notification) {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    },
+
+    getIcon(type) {
+        switch (type) {
+            case 'success':
+                return '✅';
+            case 'error':
+                return '❌';
+            case 'warning':
+                return '⚠️';
+            default:
+                return 'ℹ️';
+        }
     }
 };
 
@@ -516,11 +644,11 @@ const FormManager = {
     },
 
     showFormSuccess() {
-        Web3Manager.showNotification('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+        NotificationManager.show('Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
     },
 
     showFormError() {
-        Web3Manager.showNotification('Erro ao enviar mensagem. Tente novamente.', 'error');
+        NotificationManager.show('Erro ao enviar mensagem. Tente novamente.', 'error');
     }
 };
 
@@ -584,6 +712,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Aguardar loading completar antes de inicializar outros módulos
     setTimeout(() => {
+        LanguageManager.init();
+        NotificationManager.init();
         NavigationManager.init();
         FormManager.init();
         PerformanceManager.init();
