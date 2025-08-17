@@ -147,6 +147,7 @@ const NavigationManager = {
         this.setupScrollEffects();
         this.setupSmoothScrolling();
         this.setupLanguageSwitcher();
+        this.setupBackToTop();
     },
 
     setupMobileMenu() {
@@ -203,6 +204,28 @@ const NavigationManager = {
         if (languageSelect) {
             languageSelect.addEventListener('change', (e) => {
                 LanguageManager.switchLanguage(e.target.value);
+            });
+        }
+    },
+
+    setupBackToTop() {
+        const backToTopButton = document.querySelector('.back-to-top');
+
+        if (backToTopButton) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            backToTopButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         }
     }

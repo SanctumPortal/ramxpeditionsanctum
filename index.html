@@ -56,18 +56,18 @@
             <img src="img/ram-logo.png" alt="RAM" class="logo" loading="lazy">
             <img src="img/stellantis-logo.png" alt="Stellantis" class="logo" loading="lazy">
         </div>
-        <nav class="main-nav">
+        <nav class="main-nav" role="navigation">
             <div class="nav-toggle" id="nav-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             <ul id="nav-menu" class="nav-menu">
-                <li><a href="#manifesto" class="nav-link" data-i18n="manifesto_title">Manifesto</a></li>
-                <li><a href="#cop30" class="nav-link" data-i18n="cop30_title">Jornada para COP30</a></li>
-                <li><a href="#nfts" class="nav-link" data-i18n="nfts_title">Galeria de NFTs</a></li>
-                <li><a href="#esg" class="nav-link" data-i18n="esg_title">Dashboard ESG</a></li>
-                <li><a href="#contact" class_="nav-link" data-i18n="contact_title">Contato</a></li>
+                <li><a href="#manifesto" class="nav-link" data-i18n="manifesto_title" aria-label="View the Manifesto section">Manifesto</a></li>
+                <li><a href="#cop30" class="nav-link" data-i18n="cop30_title" aria-label="View the Road to COP30 section">Jornada para COP30</a></li>
+                <li><a href="#nfts" class="nav-link" data-i18n="nfts_title" aria-label="View the NFT Gallery section">Galeria de NFTs</a></li>
+                <li><a href="#esg" class="nav-link" data-i18n="esg_title" aria-label="View the ESG Dashboard section">Dashboard ESG</a></li>
+                <li><a href="#contact" class_="nav-link" data-i18n="contact_title" aria-label="View the Contact section">Contato</a></li>
             </ul>
             <div class="language-switcher">
                 <select id="language-select">
@@ -203,8 +203,8 @@
     <section id="nfts" class="nfts-section">
         <div class="container">
             <h2 class="section-title">NFT Collection</h2>
-            <div class="nft-grid">
-                <div class="nft-card">
+            <div class="nft-grid" role="list">
+                <div class="nft-card" role="listitem">
                     <div class="nft-image">
                         <img src="img/nft-1.jpg" alt="NFT Amazônia #1" loading="lazy">
                     </div>
@@ -214,7 +214,7 @@
                         <div class="nft-price">0.1 ETH</div>
                     </div>
                 </div>
-                <div class="nft-card">
+                <div class="nft-card" role="listitem">
                     <div class="nft-image">
                         <img src="img/nft-2.jpg" alt="NFT Amazônia #2" loading="lazy">
                     </div>
@@ -224,7 +224,7 @@
                         <div class="nft-price">0.1 ETH</div>
                     </div>
                 </div>
-                <div class="nft-card">
+                <div class="nft-card" role="listitem">
                     <div class="nft-image">
                         <img src="img/nft-3.jpg" alt="NFT Amazônia #3" loading="lazy">
                     </div>
@@ -308,16 +308,16 @@
                 </div>
                 <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Seu nome" required>
+                        <input type="text" name="name" placeholder="Seu nome" required aria-label="Your Name">
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Seu e-mail" required>
+                        <input type="email" name="email" placeholder="Seu e-mail" required aria-label="Your Email">
                     </div>
                     <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Seu telefone">
+                        <input type="tel" name="phone" placeholder="Seu telefone" aria-label="Your Phone">
                     </div>
                     <div class="form-group">
-                        <select name="interest" required>
+                        <select name="interest" required aria-label="Area of Interest">
                             <option value="">Área de interesse</option>
                             <option value="nft">Coleção NFT</option>
                             <option value="expedition">Expedições</option>
@@ -326,7 +326,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea name="message" placeholder="Sua mensagem" rows="4"></textarea>
+                        <textarea name="message" placeholder="Sua mensagem" rows="4" aria-label="Your Message"></textarea>
                     </div>
                     <button type="submit" class="cta-primary">Enviar Mensagem</button>
                 </form>
@@ -335,6 +335,7 @@
     </section>
 
     <!-- Footer -->
+    <a href="#" class="back-to-top" aria-label="Voltar ao topo">↑</a>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
