@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "ai": "^5.0.12",
+    "dotenv": "^17.2.1",
+    "ethers": "^6.15.0",
     "hardhat": "^3.0.0"
   }
 }
