@@ -1,139 +1,146 @@
 # RAM Expedition Sanctum
 
-Official website for the RAM Expedition Sanctum journey to COP30 2025.
+Site oficial da jornada RAM Expedition Sanctum para a COP30 2025.
 
-## 🌿 About the Project
+## 🌿 Sobre o Projeto
 
-RAM Expedition Sanctum represents a strategic partnership between RAM, Stellantis, and AIONDJ to demonstrate that sustainability and performance can coexist, creating a measurable positive impact on Amazon communities and the global environment.
+O RAM Expedition Sanctum representa uma parceria estratégica entre a RAM, a Stellantis e a AIONDJ para demonstrar que a sustentabilidade e o desempenho podem coexistir, criando um impacto positivo mensurável nas comunidades da Amazônia e no meio ambiente global.
 
-## 🚀 Technologies
+## Últimas Alterações (realizadas pelo Gemini)
+
+- **Configuração de Deploy**: Adicionado `.env.example` para variáveis de ambiente e `.gitignore` para excluir arquivos desnecessários.
+- **Atualizações de Frontend**: Realizadas melhorias no `index.html`, `css/style.css` e `js/app.js` para aprimorar a interface e a experiência do usuário.
+- **Página de Contrato**: O arquivo `contratoesg.html` foi atualizado com novas informações.
+- **Dependências**: Atualizadas as dependências do projeto no `package.json` e `package-lock.json`.
+
+## 🚀 Tecnologias
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
 - **Blockchain**: Web3.js, Ethers.js, Polygon Network
 - **Deployment**: Vercel
-- **Design**: Responsive, Mobile-first
-- **Performance**: Lazy loading, Image optimization
+- **Design**: Responsivo, Mobile-first
+- **Performance**: Lazy loading, Otimização de imagens
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 ramxpedition/
-├── index.html              # Main page
-├── admin.html              # Admin dashboard
+├── index.html              # Página principal
+├── admin.html              # Dashboard administrativo
 ├── css/
-│   └── style.css           # Main styles
+│   └── style.css           # Estilos principais
 ├── js/
-│   ├── app.js              # Main JavaScript
-│   └── admin.js            # Admin panel logic
-├── img/                    # Images and assets
-├── videos/                 # Project videos
-├── contracts/              # ABIs of blockchain contracts
-├── lang/                   # Language files (i18n)
-├── docs/                   # Additional documentation
-├── package.json            # Project configuration
-└── README.md               # This file
+│   ├── app.js              # JavaScript principal
+│   └── admin.js            # Lógica do painel de administração
+├── img/                    # Imagens e assets
+├── videos/                 # Vídeos do projeto
+├── contracts/              # ABIs dos contratos blockchain
+├── lang/                   # Arquivos de idioma (i18n)
+├── docs/                   # Documentação adicional
+├── package.json            # Configuração do projeto
+└── README.md               # Este arquivo
 ```
 
-## 🛠️ Installation and Development
+## 🛠️ Instalação e Desenvolvimento
 
-### Prerequisites
-- Node.js (optional, for development tools)
+### Pré-requisitos
+- Node.js (opcional, para ferramentas de desenvolvimento)
 - Git
-- A modern browser with ES6+ support
+- Um navegador moderno com suporte a ES6+
 
-### Local Development
+### Desenvolvimento Local
 
-1. Clone the repository:
+1. Clone o repositório:
 ```bash
 git clone https://github.com/ramxpedition/sanctum-site.git
 cd sanctum-site
 ```
 
-2. Start a local server:
+2. Inicie um servidor local:
 ```bash
-# Using Python
+# Usando Python
 python3 -m http.server 8000
 ```
 
-3. Access `http://localhost:8000` in your browser.
+3. Acesse `http://localhost:8000` no seu navegador.
 
-For detailed deployment instructions, see [DEPLOY_INSTRUCTIONS.md](DEPLOY_INSTRUCTIONS.md).
+Para instruções detalhadas de deploy, veja [DEPLOY_INSTRUCTIONS.md](DEPLOY_INSTRUCTIONS.md).
 
-## 🔗 Blockchain Integration
+## 🔗 Integração Blockchain
 
-The site integrates with smart contracts on the Polygon network to display real-time ESG metrics:
+O site se integra com contratos inteligentes na rede Polygon para exibir métricas ESG em tempo real:
 
-- **Stellantis ESG Contract**: `0x742d35Cc6634C0532925a3b844Bc454e4438f44e` (Testnet)
-- **RAM NFT Contract**: `0xdA10bEa1100A109dD0A04A25a3B844Bc454e4438` (Testnet)
+- **Contrato ESG da Stellantis**: `0x742d35Cc6634C0532925a3b844Bc454e4438f44e` (Testnet)
+- **Contrato RAM NFT**: `0xdA10bEa1100A109dD0A04A25a3B844Bc454e4438` (Testnet)
 
-### Web3 Configuration
+### Configuração Web3
 
-For full blockchain functionality:
+Para funcionalidade completa de blockchain:
 
-1. Install MetaMask or another Web3 provider.
-2. Connect to the Polygon network.
-3. ESG data will be loaded automatically.
+1. Instale a MetaMask ou outro provedor Web3.
+2. Conecte-se à rede Polygon.
+3. Os dados ESG serão carregados automaticamente.
 
-## 📱 Features
+## 📱 Funcionalidades
 
-### ✅ Implemented
-- [x] Responsive and mobile-first design
-- [x] Web3 integration with MetaMask
-- [x] Real-time ESG metrics
-- [x] Countdown to COP30
-- [x] NFT Gallery
-- [x] Contact form
-- [x] Performance optimization
-- [x] SEO optimized
-- [x] Admin dashboard
-- [x] Multilingual support (EN/ES/PT)
+### ✅ Implementadas
+- [x] Design responsivo e mobile-first
+- [x] Integração Web3 com a MetaMask
+- [x] Métricas ESG em tempo real
+- [x] Contagem regressiva para a COP30
+- [x] Galeria de NFTs
+- [x] Formulário de contato
+- [x] Otimização de performance
+- [x] SEO otimizado
+- [x] Dashboard administrativo
+- [x] Suporte multilíngue (EN/ES/PT)
 
-### 🔄 In Development
-- [ ] Integration with real contracts
-- [ ] Notification system
+### 🔄 Em Desenvolvimento
+- [ ] Integração com contratos reais
+- [ ] Sistema de notificações
 
-## 🎨 Design System
+## 🎨 Sistema de Design
 
-### Official Colors
-- **RAM Orange**: `#FF6B00`
-- **Stellantis Blue**: `#0033A0`
-- **ESG Green**: `#00A859`
-- **Amazon Green**: `#2E8B57`
+### Cores Oficiais
+- **Laranja RAM**: `#FF6B00`
+- **Azul Stellantis**: `#0033A0`
+- **Verde ESG**: `#00A859`
+- **Verde Amazônia**: `#2E8B57`
 
-### Typography
-- **Main Font**: Montserrat
-- **Weights**: 300, 400, 600, 700, 900
+### Tipografia
+- **Fonte Principal**: Montserrat
+- **Pesos**: 300, 400, 600, 700, 900
 
 ## 📊 Performance
 
-- **Lighthouse Score**: 95+
+- **Pontuação no Lighthouse**: 95+
 - **First Contentful Paint**: < 1.5s
 - **Largest Contentful Paint**: < 2.5s
 - **Cumulative Layout Shift**: < 0.1
 
-## 🔒 Security
+## 🔒 Segurança
 
-- Security headers configured
-- XSS protection
-- Content Security Policy
-- HTTPS/SSL required
+- Cabeçalhos de segurança configurados
+- Proteção contra XSS
+- Política de Segurança de Conteúdo
+- HTTPS/SSL obrigatório
 
-## 🤝 Contribution
+## 🤝 Contribuição
 
-1. Fork the project.
-2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+1. Faça um fork do projeto.
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`).
+3. Faça commit de suas alterações (`git commit -m 'Add some AmazingFeature'`).
+4. Faça push para a branch (`git push origin feature/AmazingFeature`).
+5. Abra um Pull Request.
 
-## 👥 Team
+## 👥 Equipe
 
-- **Official Ambassador**: Daniel Domingos (AIONDJ)
-- **Strategic Partner**: RAM Trucks Brasil
-- **Corporate Partner**: Stellantis
-- **Target Event**: COP30 Belém 2025
+- **Embaixador Oficial**: Daniel Domingos (AIONDJ)
+- **Parceiro Estratégico**: RAM Trucks Brasil
+- **Parceiro Corporativo**: Stellantis
+- **Evento Alvo**: COP30 Belém 2025
 
-## 📞 Contact
+## 📞 Contato
 
 - **Email**: contato@ramxpedition.com.br
 - **Instagram**: [@ramxpeditionsanctum](https://instagram.com/ramxpeditionsanctum)
@@ -142,5 +149,4 @@ For full blockchain functionality:
 
 ---
 
-**RAM Expedition Sanctum** - Regeneration through adventure 🌿🚗
-
+**RAM Expedition Sanctum** - Regeneração através da aventura 🌿🚗
