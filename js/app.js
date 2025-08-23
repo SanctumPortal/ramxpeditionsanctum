@@ -1,5 +1,3 @@
-// RAM Expeditions Sanctum - Main JavaScript
-// Configurações e constantes
 const CONFIG = {
     // Endereços dos contratos blockchain
     stellantisContractAddress: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
@@ -16,7 +14,13 @@ const CONFIG = {
     polygonscanUrl: 'https://polygonscan.com/address/',
     
     // Configurações de loading
-    loadingDuration: 3000
+    loadingDuration: 3000,
+
+    // API endpoints
+    esgApiUrl: 'https://api.example.com/esg-data', // Example API endpoint
+
+    // Feature flags
+    useWeb3: true,
 };
 
 // Estado global da aplicação
@@ -302,6 +306,12 @@ const AnimationManager = {
 // Gerenciamento Web3 e Blockchain
 const Web3Manager = {
     async init() {
+        if (!CONFIG.useWeb3) {
+            console.log('Web3 is disabled by configuration.');
+            this.simulateContractData(); // Simulate data even if Web3 is disabled
+            return;
+        }
+
         try {
             if (window.ethereum) {
                 AppState.web3 = new Web3(window.ethereum);
@@ -310,84 +320,104 @@ const Web3Manager = {
             } else {
                 console.warn('MetaMask não detectado');
                 this.showWeb3Warning();
+                this.simulateContractData(); // Simulate data if no provider
             }
         } catch (error) {
             console.error('Erro ao inicializar Web3:', error);
             this.showWeb3Error();
+            this.simulateContractData(); // Simulate data on error
         }
     },
 
     async setupContracts() {
         try {
-            // Aqui você carregaria os ABIs dos contratos
-            // Por enquanto, vamos simular os dados
-            this.simulateContractData();
+            // ABIs should be loaded from json files
+            const stellantisESGABI = await (await fetch('contracts/stellantis-esg-abi.json')).json();
+            const ramNFTABI = await (await fetch('contracts/ram-nft-abi.json')).json();
+
+            AppState.contracts.stellantisESG = new AppState.web3.eth.Contract(stellantisESGABI, CONFIG.stellantisContractAddress);
+            AppState.contracts.ramNFT = new AppState.web3.eth.Contract(ramNFTABI, CONFIG.ramNFTAddress);
+
+            this.updateESGMetrics();
         } catch (error) {
             console.error('Erro ao configurar contratos:', error);
+            this.simulateContractData();
         }
     },
 
     setupEventListeners() {
-        // Conectar carteira
         const connectWalletBtn = document.getElementById('connect-wallet');
         if (connectWalletBtn) {
             connectWalletBtn.addEventListener('click', () => this.connectWallet());
         }
 
-        // Verificar blockchain
         const verifyChainBtn = document.getElementById('verify-chain');
         if (verifyChainBtn) {
             verifyChainBtn.addEventListener('click', () => this.verifyOnBlockchain());
         }
 
-        // Atualizar dados ESG
         const refreshBtn = document.getElementById('refresh-impact');
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => this.updateESGMetrics());
+        }
+
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length > 0) {
+                    AppState.account = accounts[0];
+                    this.updateWalletUI();
+                } else {
+                    AppState.account = null;
+                    this.updateWalletUI();
+                }
+            });
         }
     },
 
     async connectWallet() {
         try {
-            const accounts = await window.ethereum.request({
-                method: 'eth_requestAccounts'
-            });
-            
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             AppState.account = accounts[0];
             this.updateWalletUI();
             this.updateESGMetrics();
-            
         } catch (error) {
             console.error('Erro ao conectar carteira:', error);
-            alert('Erro ao conectar carteira. Verifique se o MetaMask está instalado.');
+            NotificationManager.show('Erro ao conectar carteira. Verifique se o MetaMask está instalado e tente novamente.', 'error');
         }
     },
 
     updateWalletUI() {
         const connectBtn = document.getElementById('connect-wallet');
-        if (connectBtn && AppState.account) {
-            connectBtn.textContent = `Conectado: ${AppState.account.substring(0, 6)}...${AppState.account.substring(38)}`;
-            connectBtn.disabled = true;
+        if (connectBtn) {
+            if (AppState.account) {
+                connectBtn.textContent = `Conectado: ${AppState.account.substring(0, 6)}...${AppState.account.substring(38)}`;
+                connectBtn.disabled = true;
+            } else {
+                connectBtn.textContent = 'Conectar Carteira';
+                connectBtn.disabled = false;
+            }
         }
     },
 
     simulateContractData() {
-        // Simular dados dos contratos para demonstração
-        AppState.esgData = {
-            carbon: Math.floor(Math.random() * 10000) + 5000,
-            community: Math.floor(Math.random() * 50) + 25,
-            area: Math.floor(Math.random() * 100000) + 50000,
-            lastTransaction: '0x742d...f44e'
-        };
-        
-        this.updateESGUI();
+        console.log("Simulating contract data...");
+        // Simulate more realistic data changes
+        setInterval(() => {
+            AppState.esgData.carbon += Math.floor(Math.random() * 100);
+            AppState.esgData.community += Math.floor(Math.random() * 2);
+            AppState.esgData.area += Math.floor(Math.random() * 500);
+            AppState.esgData.lastTransaction = `0x${[...Array(40)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`;
+            this.updateESGUI();
+        }, 5000); // Update every 5 seconds
     },
 
     async updateESGMetrics() {
+        if (!CONFIG.useWeb3 || !AppState.contracts.stellantisESG) {
+            this.simulateContractData();
+            return;
+        }
+
         try {
-            // Em produção, aqui você faria chamadas reais para os contratos
-            // Por enquanto, vamos simular atualizações
-            
             const carbonEl = document.getElementById('carbon-live');
             const communityEl = document.getElementById('community-live');
             const areaEl = document.getElementById('area-live');
@@ -395,14 +425,21 @@ const Web3Manager = {
             if (carbonEl) carbonEl.textContent = 'Atualizando...';
             if (communityEl) communityEl.textContent = 'Atualizando...';
             if (areaEl) areaEl.textContent = 'Atualizando...';
-            
-            // Simular delay de rede
-            setTimeout(() => {
-                this.simulateContractData();
-            }, 2000);
-            
+
+            const [carbon, community, area, lastTransaction] = await Promise.all([
+                AppState.contracts.stellantisESG.methods.getCompensatedCarbon().call(),
+                AppState.contracts.stellantisESG.methods.getImpactedCommunities().call(),
+                AppState.contracts.stellantisESG.methods.getPreservedArea().call(),
+                AppState.contracts.stellantisESG.methods.getLastTransaction().call(),
+            ]);
+
+            AppState.esgData = { carbon, community, area, lastTransaction };
+            this.updateESGUI();
+
         } catch (error) {
             console.error('Erro ao atualizar métricas ESG:', error);
+            NotificationManager.show('Erro ao buscar dados da blockchain. Mostrando dados simulados.', 'error');
+            this.simulateContractData();
         }
     },
 
