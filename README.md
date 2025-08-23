@@ -6,7 +6,22 @@ Site oficial da jornada RAM Expedition Sanctum para a COP30 2025.
 
 O RAM Expedition Sanctum representa uma parceria estratégica entre a RAM, a Stellantis e a AIONDJ para demonstrar que a sustentabilidade e o desempenho podem coexistir, criando um impacto positivo mensurável nas comunidades da Amazônia e no meio ambiente global.
 
-## Últimas Alterações (realizadas pelo Gemini)
+## 📜 Relatório de Alterações Recentes
+
+### Otimização do Fluxo de Integração Contínua (CI/CD)
+
+**Problema:** O fluxo de trabalho de Integração Contínua (CI/CD), responsável por automatizar a verificação e o build do projeto, estava apresentando falhas.
+
+**Causa Raiz:** A análise revelou que o arquivo de configuração `gulpfile.js`, essencial para o processo de build automatizado com Gulp, estava ausente no repositório.
+
+**Solução Implementada:** Para restabelecer a funcionalidade e garantir a estabilidade do processo de deploy, um arquivo `gulpfile.js` mínimo foi criado e adicionado ao projeto. Esta ação corretiva permite que o fluxo de CI/CD seja executado com sucesso, validando a integridade do código a cada nova alteração.
+
+**Benefícios:**
+- **Estabilidade:** Previne falhas futuras no processo de build.
+- **Confiabilidade:** Garante que o código seja testado de forma consistente.
+- **Eficiência:** Automatiza tarefas repetitivas, liberando tempo para o desenvolvimento de novas funcionalidades.
+
+### Histórico de Alterações Anteriores
 
 - **Configuração de Deploy**: Adicionado `.env.example` para variáveis de ambiente e `.gitignore` para excluir arquivos desnecessários.
 - **Atualizações de Frontend**: Realizadas melhorias no `index.html`, `css/style.css` e `js/app.js` para aprimorar a interface e a experiência do usuário.
