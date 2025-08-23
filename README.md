@@ -36,13 +36,12 @@ This project is idealized and realized by **AIONDJ**.
    npm install
    ```
 
-3. Start a local server:
+3. Start the development server:
    ```bash
-   # Using Python
-   python3 -m http.server 8000
+   gulp
    ```
 
-4. Access `http://localhost:8000` in your browser.
+4. Your browser will automatically open to `http://localhost:3000`.
 
 ## 🚀 Deployment
 
