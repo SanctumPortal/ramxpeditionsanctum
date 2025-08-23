@@ -1,5 +1,5 @@
 const CONFIG = {
-    // Endereços dos contratos blockchain
+    // FIXME: Endereços dos contratos blockchain
     stellantisContractAddress: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
     ramNFTAddress: '0xdA10bEa1100A109dD0A04A25a3B844Bc454e4438',
     
@@ -16,7 +16,7 @@ const CONFIG = {
     // Configurações de loading
     loadingDuration: 3000,
 
-    // API endpoints
+    // FIXME: API endpoints
     esgApiUrl: 'https://api.example.com/esg-data', // Example API endpoint
 
     // Feature flags
@@ -61,7 +61,7 @@ const Utils = {
     // Formatação de valores em ETH
     formatEth(wei) {
         if (!wei) return '0';
-        return parseFloat(ethers.utils.formatEther(wei)).toFixed(4);
+        return parseFloat(web3.utils.fromWei(wei, 'ether')).toFixed(4);
     },
 
     // Scroll suave para seção
@@ -138,9 +138,9 @@ const LoadingManager = {
         AnimationManager.init();
         CountdownManager.init();
         
-        // Tentar conectar Ethers se disponível
+        // Tentar conectar Web3 se disponível
         if (window.ethereum) {
-            EthersManager.init();
+            Web3Manager.init();
         }
     }
 };
@@ -304,28 +304,28 @@ const AnimationManager = {
     }
 };
 
-// Gerenciamento Ethers e Blockchain
-const EthersManager = {
+// Gerenciamento Web3 e Blockchain
+const Web3Manager = {
     async init() {
         if (!CONFIG.useWeb3) {
-            console.log('Ethers is disabled by configuration.');
-            this.simulateContractData(); // Simulate data even if Ethers is disabled
+            console.log('Web3 is disabled by configuration.');
+            this.simulateContractData(); // Simulate data even if Web3 is disabled
             return;
         }
 
         try {
             if (window.ethereum) {
-                AppState.provider = new ethers.providers.Web3Provider(window.ethereum);
+                AppState.provider = new Web3(window.ethereum);
                 await this.setupContracts();
                 this.setupEventListeners();
             } else {
                 console.warn('MetaMask não detectado');
-                this.showEthersWarning();
+                this.showWeb3Warning();
                 this.simulateContractData(); // Simulate data if no provider
             }
         } catch (error) {
-            console.error('Erro ao inicializar Ethers:', error);
-            this.showEthersError();
+            console.error('Erro ao inicializar Web3:', error);
+            this.showWeb3Error();
             this.simulateContractData(); // Simulate data on error
         }
     },
@@ -336,8 +336,8 @@ const EthersManager = {
             const stellantisESGABI = await (await fetch('contracts/stellantis-esg-abi.json')).json();
             const ramNFTABI = await (await fetch('contracts/ram-nft-abi.json')).json();
 
-            AppState.contracts.stellantisESG = new ethers.Contract(CONFIG.stellantisContractAddress, stellantisESGABI, AppState.provider);
-            AppState.contracts.ramNFT = new ethers.Contract(CONFIG.ramNFTAddress, ramNFTABI, AppState.provider);
+            AppState.contracts.stellantisESG = new AppState.provider.eth.Contract(stellantisESGABI, CONFIG.stellantisContractAddress);
+            AppState.contracts.ramNFT = new AppState.provider.eth.Contract(ramNFTABI, CONFIG.ramNFTAddress);
 
             this.updateESGMetrics();
         } catch (error) {
@@ -366,11 +366,9 @@ const EthersManager = {
             window.ethereum.on('accountsChanged', (accounts) => {
                 if (accounts.length > 0) {
                     AppState.account = accounts[0];
-                    AppState.signer = AppState.provider.getSigner();
                     this.updateWalletUI();
                 } else {
                     AppState.account = null;
-                    AppState.signer = null;
                     this.updateWalletUI();
                 }
             });
@@ -379,9 +377,8 @@ const EthersManager = {
 
     async connectWallet() {
         try {
-            const accounts = await AppState.provider.send("eth_requestAccounts", []);
+            const accounts = await AppState.provider.eth.requestAccounts();
             AppState.account = accounts[0];
-            AppState.signer = AppState.provider.getSigner();
             this.updateWalletUI();
             this.updateESGMetrics();
         } catch (error) {
@@ -431,10 +428,10 @@ const EthersManager = {
             if (areaEl) areaEl.textContent = 'Atualizando...';
 
             const [carbon, community, area, lastTransaction] = await Promise.all([
-                AppState.contracts.stellantisESG.getCompensatedCarbon(),
-                AppState.contracts.stellantisESG.getImpactedCommunities(),
-                AppState.contracts.stellantisESG.getPreservedArea(),
-                AppState.contracts.stellantisESG.getLastTransaction(),
+                AppState.contracts.stellantisESG.methods.getCompensatedCarbon().call(),
+                AppState.contracts.stellantisESG.methods.getImpactedCommunities().call(),
+                AppState.contracts.stellantisESG.methods.getPreservedArea().call(),
+                AppState.contracts.stellantisESG.methods.getLastTransaction().call(),
             ]);
 
             AppState.esgData = { carbon, community, area, lastTransaction };
@@ -793,19 +790,6 @@ window.addEventListener('unhandledrejection', (e) => {
     console.error('Promise rejeitada:', e.reason);
 });
 
-// Service Worker para cache (opcional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registrado:', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW falhou:', registrationError);
-            });
-    });
-}
-
 // Exportar para uso em outros scripts se necessário
 window.RamExpedition = {
     Utils,
@@ -813,4 +797,3 @@ window.RamExpedition = {
     AppState,
     CONFIG
 };
-

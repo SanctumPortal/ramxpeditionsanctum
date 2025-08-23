@@ -61,6 +61,19 @@ For full blockchain functionality:
 2. Connect to the Polygon network.
 3. ESG data will be loaded automatically.
 
+## 📈 Progress
+
+### August 23, 2025
+
+- Corrected the contact email address in `index.html` and `README.md` to `contato@ramxpeditionsanctum.com.br`.
+- Fixed a technical issue in `js/app.js` by replacing the `ethers.js` library with `web3.js` to match the project's dependencies.
+- Marked placeholder contract addresses and API endpoints in `js/app.js` with `// FIXME:` comments for future updates.
+- Removed the broken service worker registration from `js/app.js`.
+- Corrected the LinkedIn social media link in `index.html` and `README.md`.
+- Added a `FIXME` comment in `index.html` to remind the user to verify the social media links.
+- Updated the `formspree` link in `index.html` with the correct ID.
+- Created `terms.html` and `privacy.html` with placeholder content and linked them in the footer of `index.html`.
+
 ## 🤝 Contribution
 
 1. Fork the project.
@@ -71,7 +84,7 @@ For full blockchain functionality:
 
 ## 📞 Contact
 
-- **Email**: contato@ramxpedition.com.br
+- **Email**: contato@ramxpeditionsanctum.com.br
 - **Instagram**: [@ramxpeditionsanctum](https://instagram.com/ramxpeditionsanctum)
 - **Twitter**: [@ram_sanctum](https://twitter.com/ram_sanctum)
 - **LinkedIn**: [RAM Xpedition](https://linkedin.com/company/ramxpedition)
