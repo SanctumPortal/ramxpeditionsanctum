@@ -44,6 +44,8 @@ This project is idealized and realized by **AIONDJ**.
 
 4. Access `http://localhost:8000` in your browser.
 
+## 🚀 Deployment
+
 For detailed deployment instructions, see [DEPLOY_INSTRUCTIONS.md](DEPLOY_INSTRUCTIONS.md).
 
 ## 🔗 Blockchain Integration
