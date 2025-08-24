@@ -1,9 +1,14 @@
 {
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --ext .js"
+  },
   "dependencies": {
     "gulp": "^5.0.1",
     "web3": "^4.10.0"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.4"
+    "browser-sync": "^3.0.4",
+    "eslint": "^9.5.0"
   }
 }
