@@ -1,0 +1,116 @@
+{
+  "name": "Ramxpedition Webhook to DB",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ramxpedition",
+        "httpMethod": "POST",
+        "options": {}
+      },
+      "id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "a1b2c3d4-e5f6-7890-1234-567890abcdef"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/api/run",
+        "method": "POST",
+        "sendBody": true,
+        "jsonBody": "={{$json.body}}",
+        "options": {}
+      },
+      "id": "b2c3d4e5-f6a7-8901-2345-67890abcdef1",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        470,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const now = new Date();\nconst data = $json;\n\n// The result from the previous node is in the 'data' property\n// We'll stringify it to be safe for the database.\nconst result = JSON.stringify(data);\n\nreturn {\n  timestamp: now.toISOString(),\n  result: result\n};"
+      },
+      "id": "c3d4e5f6-a7b8-9012-3456-7890abcdef12",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [
+        690,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "table": "ai_results",
+        "columns": "timestamp,result",
+        "options": {}
+      },
+      "id": "d4e5f6a7-b8c9-0123-4567-890abcdef123",
+      "name": "Save to DB",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.4,
+      "position": [
+        910,
+        300
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "Postgres",
+          "name": "Postgres"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Save to DB",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
