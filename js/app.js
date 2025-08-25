@@ -33,21 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const expeditionButton = document.getElementById('cta-expedition');
     if (expeditionButton) {
         expeditionButton.addEventListener('click', () => {
-            scrollToSection('expedition');
+            handleNavClick('expedition', document.querySelector('[data-section="expedition"]'));
         });
     }
 
     const manifestoButton = document.getElementById('cta-manifesto');
     if (manifestoButton) {
         manifestoButton.addEventListener('click', () => {
-            scrollToSection('manifesto');
+            handleNavClick('manifesto', document.querySelector('[data-section="manifesto"]'));
         });
     }
 });
-
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
