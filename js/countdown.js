@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownGrid = document.querySelector('.countdown-grid');
 
     if (countdownGrid) {
-        countdownGrid.innerHTML = ''; // Clear existing hardcoded countdowns
         countdowns.forEach(event => {
             const countdownCard = document.createElement('div');
             countdownCard.classList.add('countdown-card');
