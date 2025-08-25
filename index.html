@@ -31,10 +31,13 @@
 
     <!-- Header -->
     <header id="header">
-        <nav class="main-nav container" role="navigation">
-            <a href="#home" class="nav-brand">
-                <img src="img/ram-logo.png" alt="RAM Logo">
-            </a>
+        <div class="brand-bar">
+            <img src="img/ram-logo.png" alt="RAM" class="logo" loading="lazy">
+            <img src="img/stellantis-logo.png" alt="Stellantis" class="logo" loading="lazy">
+        </div>
+        <nav class="main-nav" role="navigation">
+            <div class="nav-toggle" id="nav-toggle">
+            </div>
             <ul id="nav-menu" class="nav-menu">
                 <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
                 <li><a href="#manifesto" class="nav-link" data-section="manifesto">Manifesto</a></li>
@@ -44,8 +47,61 @@
         </nav>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="video-bg">
+            <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
+                <source src="videos/manifesto-esg.mp4" type="video/mp4">
+                <source src="videos/manifesto-esg.webm" type="video/webm">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                    <p class="title-line" data-i18n="hero_title">RAM Expedition</p>
+                    <p class="title-line highlight">Sanctum</p>
+                </h1>
+                <h2 class="hero-subtitle" data-i18n="hero_subtitle">Site oficial da jornada RAM Expedition Sanctum para COP30 2025.</h2>
+            
+            <!-- Countdown -->
+            <div class="countdown-container">
+                <h3>Contagem regressiva para COP30</h3>
+                <div class="countdown" id="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">000</span>
+                        <span class="countdown-label">Dias</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">Minutos</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="partners-logos">
+                <img src="img/tomorrowland-logo.png" alt="Tomorrowland" loading="lazy">
+                <img src="img/amazon-fund.png" alt="Fundo Amazônia" loading="lazy">
+                <img src="img/un-climate.png" alt="UN Climate" loading="lazy">
+            </div>
+            
+            <div class="hero-cta">
+                <button class="cta-primary" onclick="scrollToSection('contato')">
+                    Participar da Expedição
+                </button>
+                <button class="cta-secondary" onclick="scrollToSection('manifesto')">
+                    Conhecer o Manifesto
+                </button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
 
         <!-- Home Section (Hero) -->
         <section id="home" class="hero active">
