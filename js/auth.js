@@ -33,12 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     });
 
-    logoutButton.addEventListener('click', () => {
-        signOut(auth).then(() => {
-            updateUserInfo(null);
-        });
-    });
-
     onAuthStateChanged(auth, (user) => {
         updateUserInfo(user);
     });
@@ -49,6 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
             loginButton.style.display = 'none';
             userName.textContent = user.displayName;
             userPhoto.src = user.photoURL;
+
+            const logoutButton = document.getElementById('logout-button');
+            logoutButton.addEventListener('click', () => {
+                signOut(auth).then(() => {
+                    updateUserInfo(null);
+                });
+            });
         } else {
             userInfo.style.display = 'none';
             loginButton.style.display = 'block';
