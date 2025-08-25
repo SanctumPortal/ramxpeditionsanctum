@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetSection = document.getElementById(targetSectionId);
         if (targetSection) {
             targetSection.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.location.href = `index.html#${targetSectionId}`;
         }
 
         // Update active state on nav links
