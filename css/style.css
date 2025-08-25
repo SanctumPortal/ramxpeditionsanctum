@@ -438,6 +438,12 @@ section {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+    .countdown-grid {
+        grid-template-columns: 1fr;
+    }
+}
 .countdown-card {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
