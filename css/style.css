@@ -45,6 +45,7 @@ body {
     background-image: url('../img/amazon-pattern.png');
     background-attachment: fixed;
     overflow-x: hidden;
+    margin: 0;
 }
 
 /* --- Typography --- */
