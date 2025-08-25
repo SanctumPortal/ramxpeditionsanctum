@@ -1,7 +1,13 @@
 {
+  "name": "ramxpeditionsanctum",
+  "version": "1.0.0",
+  "description": "Official website of the RAM Expeditions Sanctum journey to COP30 2025.",
+  "author": "AIONDJ",
   "type": "module",
   "scripts": {
-    "lint": "eslint . --ext .js"
+    "start": "browser-sync start --server --files \"**/*\" ",
+    "lint": "eslint . --ext .js",
+    "build": "gulp"
   },
   "dependencies": {
     "gulp": "^5.0.1",
@@ -10,5 +16,12 @@
   "devDependencies": {
     "browser-sync": "^3.0.4",
     "eslint": "^9.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIONDJ/ramxpeditionsanctum.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AIONDJ/ramxpeditionsanctum/issues"
   }
 }
