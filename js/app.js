@@ -29,6 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    const expeditionButton = document.getElementById('cta-expedition');
+    if (expeditionButton) {
+        expeditionButton.addEventListener('click', () => {
+            scrollToSection('expedition');
+        });
+    }
+
+    const manifestoButton = document.getElementById('cta-manifesto');
+    if (manifestoButton) {
+        manifestoButton.addEventListener('click', () => {
+            scrollToSection('manifesto');
+        });
+    }
 });
 
 function scrollToSection(sectionId) {
