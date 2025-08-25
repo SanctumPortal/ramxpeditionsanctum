@@ -1,3 +1,15 @@
+const {
+    app,
+    auth,
+    db,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut,
+    doc,
+    getDoc,
+    setDoc
+} = window.firebase;
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('login-button');
@@ -6,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const userName = document.getElementById('user-name');
     const userPhoto = document.getElementById('user-photo');
 
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new GoogleAuthProvider();
 
     loginButton.addEventListener('click', () => {
-        auth.signInWithPopup(provider)
+        signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user;
                 console.log(user);
@@ -22,12 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     logoutButton.addEventListener('click', () => {
-        auth.signOut().then(() => {
+        signOut(auth).then(() => {
             updateUserInfo(null);
         });
     });
 
-    auth.onAuthStateChanged((user) => {
+    onAuthStateChanged(auth, (user) => {
         updateUserInfo(user);
     });
 
@@ -48,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function saveUserToFirestore(user) {
         if (!user) return;
 
-        const userRef = db.collection('users').doc(user.uid);
+        const userRef = doc(db, 'users', user.uid);
 
-        userRef.get().then((doc) => {
-            if (!doc.exists) {
-                userRef.set({
+        getDoc(userRef).then((docSnap) => {
+            if (!docSnap.exists()) {
+                setDoc(userRef, {
                     displayName: user.displayName,
                     email: user.email,
                     photoURL: user.photoURL,
