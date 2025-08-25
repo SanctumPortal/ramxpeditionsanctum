@@ -37,18 +37,15 @@
             <img src="img/stellantis-logo.png" alt="Stellantis" class="logo" style="height: 55px;" loading="lazy">
         </div>
         <nav class="main-nav" role="navigation">
-            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
-                <span class="hamburger"></span>
-            </button>
             <ul id="nav-menu" class="nav-menu">
                 <div class="nav-links-left">
-                    <li><a href="#home" class="nav-link active" data-section="home">Home</a></li>
-                    <li><a href="#manifesto" class="nav-link" data-section="manifesto">Manifesto</a></li>
-                    <li><a href="#expedition" class="nav-link" data-section="expedition">A Expedição</a></li>
-                    <li><a href="#partners" class="nav-link" data-section="partners">Parceiros</a></li>
+                    <li><button class="nav-link active" data-section="hero">Home</button></li>
+                    <li><button class="nav-link" data-section="manifesto">Manifesto</button></li>
+                    <li><button class="nav-link" data-section="expedition">A Expedição</button></li>
+                    <li><button class="nav-link" data-section="partners">Parceiros</button></li>
                     <li><a href="countdowns.html" class="nav-link" data-section="countdowns">Countdowns</a></li>
                 </div>
-                <li><a href="login.html" class="nav-link" data-section="login">Login</a></li>
+                <li><button id="open-login-modal-button" class="nav-link" data-section="login">Login</button></li>
             </ul>
         </nav>
     </header>
@@ -63,11 +60,8 @@
             <div class="video-overlay"></div>
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">
-                    <p class="title-line" data-i18n="hero_title">RAM Expedition</p>
-                    <p class="title-line highlight">Sanctum</p>
-                </h1>
-                <h2 class="hero-subtitle" data-i18n="hero_subtitle">Site oficial da jornada RAM Expedition Sanctum para COP30 2025.</h2>
+            <h1 class="hero-title" data-i18n="hero_title">RAM Expedition <span class="highlight">Sanctum</span></h1>
+            <h2 class="hero-subtitle" data-i18n="hero_subtitle">Site oficial da jornada RAM Expedition Sanctum para COP30 2025.</h2>
             
             <!-- Countdown -->
             <div class="countdown-container">
@@ -87,7 +81,7 @@
             </div>
             
             <div class="hero-cta">
-                <button class="cta-primary" onclick="scrollToSection('contato')">
+                <button class="cta-primary" onclick="scrollToSection('expedition')">
                     Participar da Expedição
                 </button>
                 <button class="cta-secondary" onclick="scrollToSection('manifesto')">
@@ -100,21 +94,6 @@
             <div class="scroll-arrow"></div>
         </div>
     </section>
-
-        <!-- Home Section (Hero) -->
-        <section id="home" class="hero active">
-            <div class="video-bg">
-                <video autoplay muted loop playsinline poster="img/hero-poster.jpg">
-                    <source src="videos/expedition-highlights.mp4" type="video/mp4">
-                </video>
-                <div class="video-overlay"></div>
-            </div>
-            <div class="hero-content">
-                <h1 class="hero-title">RAM Expedition <span class="highlight">Sanctum</span></h1>
-                <h2 class="hero-subtitle">A jornada de regeneração e descoberta pela Amazônia, rumo à COP30.</h2>
-                <a href="#manifesto" class="cta-button section-link" data-section="manifesto">Conheça o Manifesto</a>
-            </div>
-        </section>
 
         <!-- Manifesto Section -->
         <section id="manifesto">
@@ -164,7 +143,23 @@
             </div>
         </section>
 
-    </main>
+    
+
+    <!-- Login Section/Modal -->
+    <div id="login-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="login-container">
+                <h1>Login</h1>
+                <button id="login-button">Login com Google</button>
+                <div id="user-info" style="display: none; margin-top: 2rem;">
+                    <p>Bem-vindo, <span id="user-name"></span>!</p>
+                    <img id="user-photo" src="" alt="User photo" style="width: 100px; border-radius: 50%; margin-top: 1rem;">
+                    <button id="logout-button" style="margin-top: 1rem;">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -187,5 +182,49 @@
     <script src="js/app.js"></script>
     <script src="js/dynamic-content.js"></script>
 
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <!-- Your web app's Firebase configuration -->
+    <script>
+        // TODO: Replace with your own Firebase project configuration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+    </script>
+
+    <script src="js/auth.js"></script>
+
+    <script>
+        const loginModal = document.getElementById('login-modal');
+        const openLoginModalButton = document.getElementById('open-login-modal-button');
+        const closeButton = document.querySelector('.close-button');
+
+        openLoginModalButton.onclick = function() {
+            loginModal.style.display = 'block';
+        }
+
+        closeButton.onclick = function() {
+            loginModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
