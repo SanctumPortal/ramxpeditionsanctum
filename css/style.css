@@ -409,6 +409,7 @@ section {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 .scroll-arrow {
     width: 20px;
