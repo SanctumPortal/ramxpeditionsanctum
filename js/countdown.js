@@ -46,10 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                countdownElement.querySelector('[data-days]').textContent = days;
-                countdownElement.querySelector('[data-hours]').textContent = hours;
-                countdownElement.querySelector('[data-minutes]').textContent = minutes;
-                countdownElement.querySelector('[data-seconds]').textContent = seconds;
+                if (countdownElement && countdownElement.querySelector('[data-days]')) {
+                    countdownElement.querySelector('[data-days]').textContent = days;
+                    countdownElement.querySelector('[data-hours]').textContent = hours;
+                    countdownElement.querySelector('[data-minutes]').textContent = minutes;
+                    countdownElement.querySelector('[data-seconds]').textContent = seconds;
+                }
 
                 if (distance < 0) {
                     countdownElement.innerHTML = '<div class="countdown-item"><h2>Evento Encerrado!</h2></div>';
