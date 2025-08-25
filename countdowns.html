@@ -76,11 +76,14 @@
                 <span class="hamburger"></span>
             </button>
             <ul id="nav-menu" class="nav-menu">
-                <li><a href="index.html#home" class="nav-link" data-section="home">Home</a></li>
-                <li><a href="index.html#manifesto" class="nav-link" data-section="manifesto">Manifesto</a></li>
-                <li><a href="index.html#expedition" class="nav-link" data-section="expedition">A Expedição</a></li>
-                <li><a href="index.html#partners" class="nav-link" data-section="partners">Parceiros</a></li>
-                <li><a href="countdowns.html" class="nav-link active" data-section="countdowns">Countdowns</a></li>
+                <div class="nav-links-left">
+                    <li><a href="index.html#home" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="index.html#manifesto" class="nav-link" data-section="manifesto">Manifesto</a></li>
+                    <li><a href="index.html#expedition" class="nav-link" data-section="expedition">A Expedição</a></li>
+                    <li><a href="index.html#partners" class="nav-link" data-section="partners">Parceiros</a></li>
+                    <li><a href="countdowns.html" class="nav-link active" data-section="countdowns">Countdowns</a></li>
+                </div>
+                <li><a href="login.html" class="nav-link" data-section="login">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -100,24 +103,7 @@
         </section>
 
         <div class="countdown-grid">
-            <div class="countdown-card">
-                <h2>Tomorrowland Brasil</h2>
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <span class="countdown-number">46</span>
-                        <span class="countdown-label">Dias</span>
-                    </div>
-                </div>
-            </div>
-            <div class="countdown-card">
-                <h2>The Town</h2>
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <span class="countdown-number">12</span>
-                        <span class="countdown-label">Dias</span>
-                    </div>
-                </div>
-            </div>
+            <!-- Countdown cards will be dynamically generated here -->
         </div>
     </main>
 
@@ -140,6 +126,7 @@
 
     <!-- Scripts -->
     <script src="js/app.js"></script>
+    <script src="js/countdown.js"></script>
 
 </body>
 </html>

@@ -116,7 +116,7 @@ a:hover { color: var(--color-text-primary); }
 
 .main-nav {
     display: flex;
-    justify-content: center; /* Centered navigation */
+    justify-content: space-between; /* Changed from center */
     align-items: center;
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--color-border);
@@ -125,7 +125,15 @@ a:hover { color: var(--color-text-primary); }
 
 .nav-menu {
     display: flex;
+    justify-content: space-between; /* Added */
+    align-items: center; /* Added */
+    width: 100%; /* Added */
     list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links-left {
+    display: flex;
     gap: 2.5rem;
 }
 
