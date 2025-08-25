@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    const countdownGrid = document.querySelector('.countdown-grid');
+    const countdownGrid = document.querySelector('main.countdown-grid');
 
     if (countdownGrid) {
         countdowns.forEach(event => {
