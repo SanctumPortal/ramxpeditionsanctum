@@ -2,7 +2,7 @@
 FROM nginx:latest
 
 # Copy all static assets to the NGINX default web root directory
-COPY . /usr/share/nginx/html
+COPY dist /usr/share/nginx/html
 
 # Expose port 80 for HTTP traffic
 EXPOSE 80

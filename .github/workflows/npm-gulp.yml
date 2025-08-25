@@ -35,7 +35,7 @@ jobs:
         npm install
         npm audit --audit-level=high
         npm run lint
-        gulp
+        gulp build
 
   deploy:
     needs: build
