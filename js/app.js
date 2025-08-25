@@ -3,6 +3,14 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('header');
+    const brandBar = document.querySelector('.brand-bar');
+
+    if (header && brandBar) {
+        const headerHeight = header.offsetHeight;
+        brandBar.style.marginTop = `${headerHeight}px`;
+    }
+
     const navLinks = document.querySelectorAll('.nav-link');
 
     // Function to handle navigation click
