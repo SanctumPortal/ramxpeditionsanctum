@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'The Town',
             date: '2025-09-06T00:00:00'
         }
-    ];
+    ].sort((a, b) => new Date(a.date) - new Date(b.date));
 
     const countdownGrid = document.querySelector('.countdown-grid');
 
