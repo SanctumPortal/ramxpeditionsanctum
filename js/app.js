@@ -3,6 +3,15 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    }
+
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.main-content > section');
     const heroCtaButton = document.querySelector('.section-link');
@@ -27,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
         });
+
+        // Close the mobile menu after clicking a link
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
 
         // Scroll to the top of the page to see the new section
         window.scrollTo(0, 0);
