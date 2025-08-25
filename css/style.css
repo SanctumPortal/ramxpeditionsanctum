@@ -95,6 +95,14 @@ a:hover { color: var(--color-text-primary); }
 }
 
 /* --- Header & Navigation --- */
+.brand-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 2rem; /* Add some space between the logos */
+}
+
 #header {
     position: fixed;
     top: 0;
