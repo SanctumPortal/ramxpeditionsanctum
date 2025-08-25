@@ -361,12 +361,9 @@ section {
 /* --- Countdown & Hero CTA --- */
 .countdown-container {
     margin-top: 2rem;
-}
-.countdown {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 1rem;
-    margin-top: 1rem;
 }
 .partners-logos {
     margin-top: 2rem;
