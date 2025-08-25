@@ -7,7 +7,7 @@
   "scripts": {
     "start": "browser-sync start --server --files \"**/*\" ",
     "lint": "eslint . --ext .js",
-    "build": "gulp"
+    "build": "gulp build"
   },
   "dependencies": {
     "gulp": "^5.0.1",

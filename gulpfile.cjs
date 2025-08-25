@@ -19,4 +19,24 @@ function watchFiles() {
   gulp.watch('./js/**/*.js', browserSync.reload);
 }
 
+// Build task
+function build() {
+  return gulp.src([
+    '*.html',
+    'css/**/*.css',
+    'js/**/*.js',
+    'img/**/*',
+    'videos/**/*',
+    'lang/**/*',
+    'contracts/**/*',
+    'docs/**/*',
+    '*.ico',
+    '*.png',
+    'robots.txt',
+    'sitemap.xml'
+  ], { base: './' })
+    .pipe(gulp.dest('dist'));
+}
+
 gulp.task('default', serve);
+gulp.task('build', build);
