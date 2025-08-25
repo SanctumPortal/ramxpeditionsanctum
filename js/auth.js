@@ -34,7 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     onAuthStateChanged(auth, (user) => {
-        updateUserInfo(user);
+        if (user) {
+            const userRef = doc(db, 'users', user.uid);
+            getDoc(userRef).then((docSnap) => {
+                if (docSnap.exists()) {
+                    updateUserInfo(docSnap.data());
+                } else {
+                    updateUserInfo(user);
+                }
+            });
+        } else {
+            updateUserInfo(null);
+        }
     });
 
     function updateUserInfo(user) {
