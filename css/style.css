@@ -261,6 +261,9 @@ section {
     padding: 4rem 0;
     text-align: center;
     border-top: 1px solid var(--color-border);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-bottom {
