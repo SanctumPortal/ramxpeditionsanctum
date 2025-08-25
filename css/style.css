@@ -191,6 +191,10 @@ section {
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 3px;
+    background-image: linear-gradient(45deg, var(--gold-accent), #fff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero-title .highlight {
