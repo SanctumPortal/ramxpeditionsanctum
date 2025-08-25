@@ -3,6 +3,18 @@
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    const video = document.querySelector('.video-bg video');
+    if (video) {
+        video.play().catch(error => {
+            console.error('Video autoplay failed:', error);
+            // Add a click listener to the document to play the video on user interaction
+            document.addEventListener('click', () => {
+                video.play();
+            }, { once: true });
+        });
+    }
+
+    const header = document.getElementById('header');
     const header = document.getElementById('header');
     const brandBar = document.querySelector('.brand-bar');
 
