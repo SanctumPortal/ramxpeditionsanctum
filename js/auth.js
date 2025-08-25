@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logoutButton.addEventListener('click', () => {
                 signOut(auth).then(() => {
                     updateUserInfo(null);
+                    window.location.href = 'index.html';
                 });
             });
         } else {
