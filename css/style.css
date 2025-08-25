@@ -368,7 +368,7 @@ section {
 }
 
 /* --- Countdown & Hero CTA --- */
-.countdown-container {
+.countdown {
     margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
