@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const header = document.getElementById('header');
-    const header = document.getElementById('header');
     const brandBar = document.querySelector('.brand-bar');
 
     if (header && brandBar) {
@@ -43,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add click listeners to all main navigation links
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+        link.addEventListener('click', () => {
             if(link.dataset.section !== 'countdowns' && link.id !== 'open-login-modal-button') {
-                e.preventDefault();
                 const targetSectionId = link.dataset.section;
                 handleNavClick(targetSectionId, link);
             }
