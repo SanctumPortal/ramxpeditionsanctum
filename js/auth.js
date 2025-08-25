@@ -74,15 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const userRef = doc(db, 'users', user.uid);
 
-        getDoc(userRef).then((docSnap) => {
-            if (!docSnap.exists()) {
-                setDoc(userRef, {
-                    displayName: user.displayName,
-                    email: user.email,
-                    photoURL: user.photoURL,
-                    lastLogin: new Date()
-                });
-            }
-        });
+        setDoc(userRef, {
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            lastLogin: new Date()
+        }, { merge: true });
     }
 });
