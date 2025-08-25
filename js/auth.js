@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(user);
                 updateUserInfo(user);
                 saveUserToFirestore(user);
+                window.location.href = 'index.html';
             })
             .catch((error) => {
                 console.error(error);
